@@ -20,7 +20,7 @@ Potrebno je implementirati paginator sa standardnim funkcionalnostima. Mogućnos
 
 ## 02 - Loading na glavnom ekranu
 
-Dodati prikaz neke vrste "loadera" dok aplikacija čeka da se podaci dohvate iz servisa.
+Dodati prikaz neke vrste "loadera" dok aplikacija čeka da se podaci dohvate iz servisa. Loading indikator treba biti centriran na stranici.
 
 ## 03 - Dodavanje novog i uređivanje postojećeg kontakta
 
