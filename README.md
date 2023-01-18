@@ -6,7 +6,7 @@ Zadatak simulira scenarij, u kojem je potrebno dovršiti određene funkcionalnos
 
 # Zadatak
 
-Aplikacija u zadatku je minijaturna verzija telefonskog imenika. Početni ekran aplikacije je tablica sa popisom kontakata, a drugi ekran skuži za uređivanje (ili kreiranje novog) kontakta. Potrebno je implementirati funkcionalnosti za paginaciju, dodavanje, uređivanje i brisanje kandidata.
+Aplikacija u zadatku je minijaturna verzija telefonskog imenika. Početni ekran aplikacije je tablica sa popisom kontakata, a drugi ekran služi za uređivanje (ili kreiranje novog) kontakta. Potrebno je implementirati funkcionalnosti za paginaciju, dodavanje, uređivanje i brisanje kandidata.
 
 U ovom zadatku koristi se vanjska biblioteka Angular Material sa predefiniranim komponentama za korisničko sučelje. Dopušteno je importanje komponenti po potrebi.
 
@@ -16,7 +16,7 @@ Kako bi zadatak bio do kraja ispunjen potrebno je implementirati slijedeće funk
 
 ## 01 - Paginacija na glavnom ekranu
 
-Potrebno je implemetirati paginator sa standardnim fukcionalnostima. Mogućnost da se korisnik može prebacivati sa stranice na stranicu (1, 2, 3, 4...). Poželjno je napraviti i funckionalnost da korisnik može birati koliko kontakata vidi na stranici (po default-u je 20).
+Potrebno je implementirati paginator sa standardnim funkcionalnostima. Mogućnost da se korisnik može prebacivati sa stranice na stranicu (1, 2, 3, 4...). Poželjno je napraviti i funckionalnost da korisnik može birati koliko kontakata vidi na stranici (po default-u je 20).
 
 ## 02 - Loading na glavnom ekranu
 
