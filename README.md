@@ -43,7 +43,7 @@ Na osnovu dodane validacije, potrebno je korisniku prikazati poruke koje mu opis
 
 Klikom na `cancel` korisnika se vraća na popis kontakata.
 
-Klikom na `save` se pohranjuju podaci u servis. Poželjno je prikazati "loader" dok se podaci spremaju.
+Klikom na `save` se pohranjuju podaci u servis ako su podatci u formi ispravno uneseni. Poželjno je prikazati "loader" dok se podaci spremaju.
 
 ## 04 - Brisanje kontakta
 
