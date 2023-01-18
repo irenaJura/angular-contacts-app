@@ -39,9 +39,11 @@ Također, potrebno je paziti i na validacije polja:
 -   Address (nije obavezno)
 -   Phone number (nije obavezno, ali ako je upisan broj može se sastojati samo od slijedećih znakova: brojevi 0-9, znak plus "+" i razmak " ")
 
+Na osnovu dodane validacije, potrebno je korisniku prikazati poruke koje mu opisuju što treba ažurirati u unesenim podatcima.
+
 Klikom na `cancel` korisnika se vraća na popis kontakata.
 
-Klikom na `save`, okida se validacija, te ako su polja validna, pohranjuju se podaci u servis. Poželjno je prikazati "loader" dok se podaci spremaju.
+Klikom na `save` se pohranjuju podaci u servis. Poželjno je prikazati "loader" dok se podaci spremaju.
 
 ## 04 - Brisanje kontakta
 
