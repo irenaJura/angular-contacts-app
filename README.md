@@ -16,7 +16,7 @@ Kako bi zadatak bio do kraja ispunjen potrebno je implementirati slijedeće funk
 
 ## 01 - Paginacija na glavnom ekranu
 
-Potrebno je implementirati paginator sa standardnim funkcionalnostima. Mogućnost da se korisnik može prebacivati sa stranice na stranicu (1, 2, 3, 4...). Poželjno je napraviti i funckionalnost da korisnik može birati koliko kontakata vidi na stranici (po default-u je 20).
+Potrebno je implementirati paginator sa standardnim funkcionalnostima. Mogućnost da se korisnik može prebacivati sa stranice na stranicu (1, 2, 3, 4...). Poželjno je napraviti i funkcionalnost da korisnik može birati koliko kontakata vidi na stranici (po default-u je 20).
 
 ## 02 - Loading na glavnom ekranu
 
