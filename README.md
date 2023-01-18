@@ -1,4 +1,4 @@
-# TalentLyft Angular Interview
+# TalentLyft Angular Interview a01
 
 Cilj zadatka je testirati osnovna znanja Angular framework-a, odnosno baratanje Angular komponentama, routing-om, formama, validacijom, pozivanjem servisa itd.
 
