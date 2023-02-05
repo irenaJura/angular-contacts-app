@@ -1,0 +1,44 @@
+nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    list-style-type: none;
+  }
+
+  .pagination li {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+  }
+
+  .pagination a:link {
+    text-decoration: none;
+  }
+
+  .active {
+    background-color: #c6c6c6;
+    color: white;
+    border: 1px solid #c6c6c6;
+  }
+
+  .pagination li:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.selector {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.selector select {
+    margin: 0 5px;
+}

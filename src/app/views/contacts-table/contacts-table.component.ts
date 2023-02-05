@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContactModel } from '../../models/contact.model';
-import { ContactsService } from 'src/app/services/contacts.service';
+import { ContactsService, GetContactsQuery } from 'src/app/services/contacts.service';
 import { Subscription } from 'rxjs';
-
 @Component({
     selector: 'app-contacts-table',
     templateUrl: './contacts-table.component.html',
@@ -23,6 +22,10 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
     subDeleteContacts!: Subscription;
     isLoading = false;
     errorMessage = '';
+    page = 1;
+    perPage = 20;
+    totalItems = 0;
+    totalPages = 0;
 
     constructor(private readonly contactsService: ContactsService) {}
 
@@ -35,6 +38,41 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
                 error: (err) => this.errorMessage = err,
                 complete: () => this.isLoading = false
             });
+    }
+
+    displayActivePage(activePageNumber:number){
+        const query = {page: activePageNumber, perPage: this.perPage};
+        console.log("query", query)
+        this.contactsService.getContacts(query)
+        .subscribe({
+            next: (data) => {
+                this.contacts = data.data;
+                this.page = data.page;
+                this.perPage = data.perPage;
+                this.totalItems = data.totalItems;
+                this.totalPages = data.totalPages;
+            },
+            error: (err) => this.errorMessage = err,
+            complete: () => this.isLoading = false
+        });
+    }
+
+    displayActivePerPage(perPage: number) {
+        console.log("perPage", perPage)
+        const query = { perPage: perPage};
+        console.log("query", query)
+        this.contactsService.getContacts(query)
+        .subscribe({
+            next: (data) => {
+                this.contacts = data.data;
+                this.page = data.page;
+                this.perPage = data.perPage;
+                this.totalItems = data.totalItems;
+                this.totalPages = data.totalPages;
+            },
+            error: (err) => this.errorMessage = err,
+            complete: () => this.isLoading = false
+        });
     }
 
     onDelete(id: number): void {

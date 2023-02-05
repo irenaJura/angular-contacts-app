@@ -9,13 +9,15 @@ import { ContactsTableComponent } from './views/contacts-table/contacts-table.co
 import { EditContactComponent } from './views/edit-contact/edit-contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './views/loader/loader.component';
+import { PaginationComponent } from './views/pagination/pagination.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ContactsTableComponent,
         EditContactComponent,
-        LoaderComponent
+        LoaderComponent,
+        PaginationComponent
     ],
     imports: [
         BrowserModule,
