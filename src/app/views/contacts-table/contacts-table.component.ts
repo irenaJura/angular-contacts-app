@@ -18,50 +18,34 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
         'actions',
     ];
     contacts: ContactModel[] = [];
-    subGetContacts!: Subscription;
-    subDeleteContacts!: Subscription;
     isLoading = false;
     errorMessage = '';
     page = 1;
     perPage = 20;
     totalItems = 0;
     totalPages = 0;
+    subPaginate!: Subscription;
+    subDeleteContacts!: Subscription;
 
     constructor(private readonly contactsService: ContactsService) {}
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.subGetContacts = this.contactsService
-            .getContacts()
-            .subscribe({
-                next: (data) => (this.contacts = data.data),
-                error: (err) => this.errorMessage = err,
-                complete: () => this.isLoading = false
-            });
+        this.paginate();
     }
 
-    displayActivePage(activePageNumber:number){
+    displayActivePage(activePageNumber:number): void{
         const query = {page: activePageNumber, perPage: this.perPage};
-        console.log("query", query)
-        this.contactsService.getContacts(query)
-        .subscribe({
-            next: (data) => {
-                this.contacts = data.data;
-                this.page = data.page;
-                this.perPage = data.perPage;
-                this.totalItems = data.totalItems;
-                this.totalPages = data.totalPages;
-            },
-            error: (err) => this.errorMessage = err,
-            complete: () => this.isLoading = false
-        });
+        this.paginate(query);
     }
 
-    displayActivePerPage(perPage: number) {
-        console.log("perPage", perPage)
+    displayPerPage(perPage: number) {
         const query = { perPage: perPage};
-        console.log("query", query)
-        this.contactsService.getContacts(query)
+        this.paginate(query)
+    }
+
+    paginate(query?: GetContactsQuery): void {
+        this.subPaginate = this.contactsService.getContacts(query)
         .subscribe({
             next: (data) => {
                 this.contacts = data.data;
@@ -89,7 +73,7 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if(this.subGetContacts) this.subGetContacts.unsubscribe();
         if(this.subDeleteContacts) this.subDeleteContacts.unsubscribe();
+        if(this.subPaginate) this.subPaginate.unsubscribe();
     }
 }

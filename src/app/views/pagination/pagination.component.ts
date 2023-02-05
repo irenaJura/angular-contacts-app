@@ -8,7 +8,8 @@ import { Component , Input , OnChanges , Output , EventEmitter} from '@angular/c
 
 export class PaginationComponent implements OnChanges {
     @Input() totalRecords = 0;
-    @Input() recordsPerPage = 20;
+    @Input() recordsPerPage = 0;
+    @Input() totalPages = 0;
 
     @Output() onPageChange: EventEmitter<number> = new EventEmitter();
     @Output() onPerPageChange: EventEmitter<number> = new EventEmitter();
@@ -18,23 +19,10 @@ export class PaginationComponent implements OnChanges {
     perPage: number = 0;
 
     ngOnChanges(): any {
-      const pageCount = this.getPageCount();
+      const pageCount = this.totalPages;
       this.pages = this.getArrayOfPage(pageCount);
       this.activePage = 1;
       this.onPageChange.emit(1);
-    }
-
-    private getPageCount(): number {
-      let totalPage = 0;
-
-      if (this.totalRecords > 0 && this.recordsPerPage > 0) {
-        const pageCount = this.totalRecords / this.recordsPerPage;
-        const roundedPageCount = Math.floor(pageCount);
-
-        totalPage = roundedPageCount < pageCount ? roundedPageCount + 1 : roundedPageCount;
-      }
-
-      return totalPage;
     }
 
     private getArrayOfPage(pageCount: number): number [] {

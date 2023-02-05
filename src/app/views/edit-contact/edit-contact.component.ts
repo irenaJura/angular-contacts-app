@@ -30,20 +30,14 @@ export class EditContactComponent implements OnInit, OnDestroy {
         private fb: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private contactsService: ContactsService) {}
+        private contactsService: ContactsService
+    ) {}
 
     ngOnInit() {
       this.id = +this.route.snapshot.params['id'];
 
       if (this.id === 0) {
         this.isAddMode = true;
-        this.contactForm = this.fb.group({
-            firstName: ['', [Validators.required]],
-            lastName: ['', [Validators.required]],
-            emailAddress: ['', [Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-            address: [''],
-            phoneNumber: ['', Validators.pattern("^[\\d\\s+]*$")]
-        });
     };
 
       if (!this.isAddMode) {
