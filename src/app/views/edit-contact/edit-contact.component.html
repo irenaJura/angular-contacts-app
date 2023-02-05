@@ -1,27 +1,50 @@
-<mat-form-field appearance="fill">
-    <mat-label>First name</mat-label>
-    <input matInput />
-</mat-form-field>
+<h3 *ngIf="isAddMode">Add User</h3>
+<h3 *ngIf="!isAddMode">Edit User</h3>
 
-<mat-form-field appearance="fill">
-    <mat-label>Last name</mat-label>
-    <input matInput />
-</mat-form-field>
+<app-loader *ngIf="isLoading && !errorMessage"></app-loader>
 
-<mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput />
-</mat-form-field>
+<mat-error *ngIf="errorMessage">
+    {{ errorMessage }}
+</mat-error>
 
-<mat-form-field appearance="fill">
-    <mat-label>Address</mat-label>
-    <textarea matInput cdkTextareaAutosize></textarea>
-</mat-form-field>
+<form [formGroup]="contactForm" *ngIf="!errorMessage && !isLoading">
+    <mat-form-field appearance="fill">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="firstName" />
+        <mat-error *ngIf="errorHandling('firstName', 'required')">
+            You must provide a <strong>first name</strong>
+        </mat-error>
+    </mat-form-field>
 
-<mat-form-field appearance="fill">
-    <mat-label>Phone number</mat-label>
-    <input matInput />
-</mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName" />
+        <mat-error *ngIf="errorHandling('lastName', 'required')">
+            You must provide a <strong>last name</strong>
+        </mat-error>
+    </mat-form-field>
 
-<button mat-raised-button color="primary">SAVE</button>
-<button mat-raised-button>CANCEL</button>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="emailAddress" />
+        <mat-error *ngIf="errorHandling('emailAddress', 'pattern')">
+            You must provide a <strong>valid email address</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <textarea matInput cdkTextareaAutosize formControlName="address"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Phone number</mat-label>
+        <input matInput formControlName="phoneNumber" />
+        <mat-error *ngIf="errorHandling('phoneNumber', 'pattern')">
+            You must provide a <strong>valid phone number</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="button" color="primary" (click)="saveContact(contactForm)">SAVE</button>
+    <button mat-raised-button type="button" (click)="onCancel()">CANCEL</button>
+</form>

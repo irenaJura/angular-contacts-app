@@ -1,8 +1,14 @@
 <button mat-fab class="mat-fab-add">
-    <mat-icon>add</mat-icon>
+    <mat-icon [routerLink]="['edit', 0]">add</mat-icon>
 </button>
 
-<table mat-table [dataSource]="contacts">
+<app-loader *ngIf="isLoading && !errorMessage"></app-loader>
+
+<mat-error *ngIf="errorMessage">
+    {{ errorMessage }}
+</mat-error>
+
+<table mat-table [dataSource]="contacts" *ngIf="!errorMessage && !isLoading">
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>Id</th>
         <td mat-cell *matCellDef="let contact">{{ contact.id }}</td>
@@ -41,10 +47,10 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let contact">
             <button mat-icon-button>
-                <mat-icon>edit</mat-icon>
+                <mat-icon [routerLink]="['edit', contact.id]">edit</mat-icon>
             </button>
             <button mat-icon-button>
-                <mat-icon>delete</mat-icon>
+                <mat-icon (click)="onDelete(contact.id)">delete</mat-icon>
             </button>
         </td>
     </ng-container>

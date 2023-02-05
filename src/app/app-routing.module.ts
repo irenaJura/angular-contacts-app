@@ -8,6 +8,10 @@ const routes: Routes = [
         path: '',
         component: ContactsTableComponent,
     },
+    {
+        path: 'edit/:id',
+        component: EditContactComponent,
+    },
 ];
 
 @NgModule({

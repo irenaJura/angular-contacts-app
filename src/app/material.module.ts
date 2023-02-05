@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
         MatFormFieldModule,
         MatInputModule,
         TextFieldModule,
+        MatProgressSpinnerModule
     ],
     exports: [
         MatToolbarModule,
@@ -25,6 +27,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
         MatFormFieldModule,
         MatInputModule,
         TextFieldModule,
+        MatProgressSpinnerModule
     ],
 })
 export class MaterialModule {}
