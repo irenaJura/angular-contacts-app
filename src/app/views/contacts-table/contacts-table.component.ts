@@ -20,9 +20,6 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
     contacts: ContactModel[] = [];
     isLoading = false;
     errorMessage = '';
-    page = 1;
-    perPage = 0;
-    totalItems = 0;
     totalPages = 0;
     subPaginate!: Subscription;
     subDeleteContacts!: Subscription;
@@ -34,14 +31,9 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
         this.paginate();
     }
 
-    displayActivePage(activePageNumber:number): void{
-        const query = {page: activePageNumber, perPage: this.perPage};
+    displayActivePage(obj:any): void{
+        const query = {page: obj.page, perPage: obj.perPage};
         this.paginate(query);
-    }
-
-    displayPerPage(perPage: number) {
-        const query = {perPage: perPage};
-        this.paginate(query)
     }
 
     paginate(query?: GetContactsQuery): void {
@@ -49,9 +41,6 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
         .subscribe({
             next: (data) => {
                 this.contacts = data.data;
-                this.page = data.page;
-                this.perPage = data.perPage;
-                this.totalItems = data.totalItems;
                 this.totalPages = data.totalPages;
             },
             error: (err) => this.errorMessage = err,

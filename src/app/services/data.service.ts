@@ -17,7 +17,7 @@ export class DataService {
         const data = localStorage.getItem(LOCAL_STORAGE_DATA_KEY);
         return this.randomDelay().pipe(
             map((_) => {
-                this.throwErrorRandomly();
+                // this.throwErrorRandomly();
                 if (!data) {
                     return initialData;
                 }
@@ -29,7 +29,7 @@ export class DataService {
     writeData<T>(data: GenericData<T>): Observable<unknown> {
         return this.randomDelay().pipe(
             tap((_) => {
-                this.throwErrorRandomly();
+                // this.throwErrorRandomly();
                 localStorage.setItem(
                     LOCAL_STORAGE_DATA_KEY,
                     JSON.stringify(data)
