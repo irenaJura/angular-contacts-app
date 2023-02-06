@@ -59,6 +59,5 @@
     <tr mat-row *matRowDef="let row; columns: visibleColumns"></tr>
 </table>
 
-<app-pagination *ngIf="!this.errorMessage" [totalRecords]="totalItems" [recordsPerPage]="perPage"
-    [totalPages]="totalPages" (onPageChange)="displayActivePage($event)"
-    (onPerPageChange)="displayPerPage($event)"></app-pagination>
+<app-pagination *ngIf="!this.errorMessage" [totalRecords]="totalItems" [totalPages]="totalPages"
+    (onPageChange)="displayActivePage($event)" (onPerPageChange)="displayPerPage($event)"></app-pagination>

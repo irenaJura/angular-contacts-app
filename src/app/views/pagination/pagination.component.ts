@@ -20,28 +20,40 @@ export class PaginationComponent implements OnChanges {
 
     ngOnChanges(): any {
       const pageCount = this.totalPages;
-      this.pages = this.getArrayOfPage(pageCount);
+      this.pages = this.getArrayOfPage(pageCount, this.activePage);
       this.activePage = 1;
       this.onPageChange.emit(1);
     }
 
-    private getArrayOfPage(pageCount: number): number [] {
-      const pageArray = [];
+    private getArrayOfPage(pageCount: number, pageNumber: number): number [] {
+      const pageArray: number[] = [];
 
-      if (pageCount > 0) {
-          for(let i = 1 ; i <= pageCount ; i++) {
+        for(let i = 1; i <= pageCount; i++) {
             pageArray.push(i);
-          }
-      }
+        }
 
-      return pageArray;
+        if(pageArray.length >= 3) return pageArray.slice(0, 3);
+
+        return pageArray;
     }
 
     onClickPage(pageNumber: number): void {
-        if (pageNumber >= 1 && pageNumber <= this.pages.length) {
+        if (pageNumber >= 1 && pageNumber <= this.totalPages) {
             this.activePage = pageNumber;
+            console.log(pageNumber)
+            this.pages = this.updatePageArray(pageNumber, this.totalPages);
             this.onPageChange.emit(this.activePage);
         }
+    }
+
+    private updatePageArray(pageNumber:number, totalPages: number): number[] {
+        if(pageNumber !== 1 && pageNumber < totalPages) {
+            return [pageNumber - 1, pageNumber, pageNumber + 1];
+        }
+        if (pageNumber === totalPages) {
+            return [pageNumber -2, pageNumber - 1, pageNumber];
+        }
+        return this.getArrayOfPage(this.totalPages, pageNumber);
     }
 
     changePageSize(target: any): void {

@@ -21,7 +21,7 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
     isLoading = false;
     errorMessage = '';
     page = 1;
-    perPage = 20;
+    perPage = 0;
     totalItems = 0;
     totalPages = 0;
     subPaginate!: Subscription;
@@ -40,7 +40,7 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
     }
 
     displayPerPage(perPage: number) {
-        const query = { perPage: perPage};
+        const query = {perPage: perPage};
         this.paginate(query)
     }
 
