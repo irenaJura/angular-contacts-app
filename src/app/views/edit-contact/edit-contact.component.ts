@@ -65,6 +65,7 @@ export class EditContactComponent implements OnInit, OnDestroy {
 
     saveContact(contactForm: FormGroup) {
         this.isLoading = true;
+
         if (!this.isAddMode && contactForm.valid) {
             this.contactsService.updateContact(this.id, contactForm.value).subscribe({
                 next: (contact) => console.log(contact),
@@ -79,7 +80,6 @@ export class EditContactComponent implements OnInit, OnDestroy {
             })
         }
 
-        console.warn('Your order has been submitted', this.contactForm.value);
         this.contactForm.reset();
         this.router.navigate(['']);
     }
